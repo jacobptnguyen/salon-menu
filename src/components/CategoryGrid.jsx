@@ -1,9 +1,11 @@
+import { forwardRef } from "react";
 import { motion } from "framer-motion";
 import ColorImage from "./ColorImage.jsx";
 
-export default function CategoryGrid({ categories, onSelectCategory }) {
+const CategoryGrid = forwardRef(function CategoryGrid({ categories, onSelectCategory }, ref) {
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -19,7 +21,6 @@ export default function CategoryGrid({ categories, onSelectCategory }) {
           <motion.button
             key={category.id}
             type="button"
-            layoutId={`category-card-${category.id}`}
             onClick={() => onSelectCategory(category.id)}
             whileTap={{ scale: 0.97 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
@@ -41,4 +42,6 @@ export default function CategoryGrid({ categories, onSelectCategory }) {
       </div>
     </motion.div>
   );
-}
+});
+
+export default CategoryGrid;

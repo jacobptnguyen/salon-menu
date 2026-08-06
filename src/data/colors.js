@@ -1,5 +1,13 @@
-// Placeholder content. Swap `image` paths for real photos in /public/images/
-// once supplied by the salon — no other code changes required.
+// Only real, photographed colors are listed here — no placeholder/fictional
+// entries. A category with an empty `colors` array shows an empty-state
+// message until real photos are added.
+//
+// Real photos live under /public/images/colors/<category-id>/ — drop a file
+// in the matching category folder and reference it from `image`, no other
+// code changes required.
+//
+// `name` is optional — the UI falls back to showing `number` in its place
+// if a bottle has no printed/known name.
 
 export const categories = [
   {
@@ -7,15 +15,7 @@ export const categories = [
     name: "Reds",
     coverImage: "/images/categories/reds.jpg",
     swatchHex: "#C23B3B",
-    colors: [
-      { id: "cherry-kiss", name: "Cherry Kiss", finish: "Glossy", image: "/images/colors/cherry-kiss.jpg", swatchHex: "#C23B3B", number: "101" },
-      { id: "scarlet-flame", name: "Scarlet Flame", finish: "Glossy", image: "/images/colors/scarlet-flame.jpg", swatchHex: "#B22222", number: "102" },
-      { id: "ruby-slipper", name: "Ruby Slipper", finish: "Shimmer", image: "/images/colors/ruby-slipper.jpg", swatchHex: "#A62639", number: "103" },
-      { id: "cinnamon-spice", name: "Cinnamon Spice", finish: "Matte", image: "/images/colors/cinnamon-spice.jpg", swatchHex: "#9C3B2E", number: "104" },
-      { id: "candy-apple", name: "Candy Apple", finish: "Glossy", image: "/images/colors/candy-apple.jpg", swatchHex: "#D2302C", number: "105" },
-      { id: "brick-lane", name: "Brick Lane", finish: "Matte", image: "/images/colors/brick-lane.jpg", swatchHex: "#8B3A3A", number: "106" },
-      { id: "garnet-glow", name: "Garnet Glow", finish: "Glitter", image: "/images/colors/garnet-glow.jpg", swatchHex: "#7C2D3E", number: "107" },
-    ],
+    colors: [],
   },
   {
     id: "pinks",
@@ -23,14 +23,12 @@ export const categories = [
     coverImage: "/images/categories/pinks.jpg",
     swatchHex: "#E8949A",
     colors: [
-      { id: "bubblegum-pop", name: "Bubblegum Pop", finish: "Glossy", image: "/images/colors/bubblegum-pop.jpg", swatchHex: "#F49AC2", number: "108" },
-      { id: "flamingo-flirt", name: "Flamingo Flirt", finish: "Shimmer", image: "/images/colors/flamingo-flirt.jpg", swatchHex: "#F17FA1", number: "109" },
-      { id: "cotton-candy", name: "Cotton Candy", finish: "Glossy", image: "/images/colors/cotton-candy.jpg", swatchHex: "#F8B4C4", number: "110" },
-      { id: "rosewater", name: "Rosewater", finish: "Matte", image: "/images/colors/rosewater.jpg", swatchHex: "#E8949A", number: "111" },
-      { id: "fuchsia-fever", name: "Fuchsia Fever", finish: "Glossy", image: "/images/colors/fuchsia-fever.jpg", swatchHex: "#D6478A", number: "112" },
-      { id: "peony-petal", name: "Peony Petal", finish: "Shimmer", image: "/images/colors/peony-petal.jpg", swatchHex: "#EB8FA9", number: "113" },
-      { id: "blush-ballet", name: "Blush Ballet", finish: "Matte", image: "/images/colors/blush-ballet.jpg", swatchHex: "#F0C3CC", number: "114" },
-      { id: "watermelon-wink", name: "Watermelon Wink", finish: "Glitter", image: "/images/colors/watermelon-wink.jpg", swatchHex: "#F06C8E", number: "115" },
+      { id: "a1312", name: "Double Rhythm", image: "/images/colors/pinks/a1312.jpg", swatchHex: "#D6438F", number: "A1312" },
+      { id: "a1337", name: "Double Rhythm", image: "/images/colors/pinks/a1337.jpg", swatchHex: "#E85FA0", number: "A1337" },
+      { id: "a1309", name: "Double Rhythm", image: "/images/colors/pinks/a1309.jpg", swatchHex: "#F2C6D9", number: "A1309" },
+      { id: "a1586", name: "Double Rhythm", image: "/images/colors/pinks/a1586.jpg", swatchHex: "#E8CBE0", number: "A1586" },
+      { id: "a1054", name: "Double Rhythm", image: "/images/colors/pinks/a1054.jpg", swatchHex: "#DCC6E8", number: "A1054" },
+      { id: "a1541", name: "Double Rhythm", image: "/images/colors/pinks/a1541.jpg", swatchHex: "#D9C3E3", number: "A1541" },
     ],
   },
   {
@@ -39,13 +37,7 @@ export const categories = [
     coverImage: "/images/categories/nudes.jpg",
     swatchHex: "#D9C2A8",
     colors: [
-      { id: "cashmere", name: "Cashmere", finish: "Matte", image: "/images/colors/cashmere.jpg", swatchHex: "#D9C2A8", number: "116" },
-      { id: "silk-veil", name: "Silk Veil", finish: "Glossy", image: "/images/colors/silk-veil.jpg", swatchHex: "#E6D2BC", number: "117" },
-      { id: "toasted-almond", name: "Toasted Almond", finish: "Matte", image: "/images/colors/toasted-almond.jpg", swatchHex: "#C4A484", number: "118" },
-      { id: "champagne-toast", name: "Champagne Toast", finish: "Shimmer", image: "/images/colors/champagne-toast.jpg", swatchHex: "#EDE0C8", number: "119" },
-      { id: "camel-coat", name: "Camel Coat", finish: "Glossy", image: "/images/colors/camel-coat.jpg", swatchHex: "#B08D63", number: "120" },
-      { id: "sandstone", name: "Sandstone", finish: "Matte", image: "/images/colors/sandstone.jpg", swatchHex: "#CBB090", number: "121" },
-      { id: "vanilla-bean", name: "Vanilla Bean", finish: "Glossy", image: "/images/colors/vanilla-bean.jpg", swatchHex: "#EFE1CB", number: "122" },
+      { id: "dm-cateye-001", name: "Gemstone Cat Eye", image: "/images/colors/nudes/dm-cateye-001.jpg", swatchHex: "#D8B23A", number: "DM 001" },
     ],
   },
   {
@@ -53,14 +45,7 @@ export const categories = [
     name: "Corals",
     coverImage: "/images/categories/corals.jpg",
     swatchHex: "#F2836B",
-    colors: [
-      { id: "sunset-coral", name: "Sunset Coral", finish: "Glossy", image: "/images/colors/sunset-coral.jpg", swatchHex: "#F2836B", number: "123" },
-      { id: "papaya-punch", name: "Papaya Punch", finish: "Glossy", image: "/images/colors/papaya-punch.jpg", swatchHex: "#F4A261", number: "124" },
-      { id: "tangerine-dream", name: "Tangerine Dream", finish: "Shimmer", image: "/images/colors/tangerine-dream.jpg", swatchHex: "#F08A5D", number: "125" },
-      { id: "peach-fizz", name: "Peach Fizz", finish: "Matte", image: "/images/colors/peach-fizz.jpg", swatchHex: "#F6A98F", number: "126" },
-      { id: "guava-glow", name: "Guava Glow", finish: "Glossy", image: "/images/colors/guava-glow.jpg", swatchHex: "#EF6F5B", number: "127" },
-      { id: "melon-crush", name: "Melon Crush", finish: "Glitter", image: "/images/colors/melon-crush.jpg", swatchHex: "#F7967E", number: "128" },
-    ],
+    colors: [],
   },
   {
     id: "berries",
@@ -68,13 +53,14 @@ export const categories = [
     coverImage: "/images/categories/berries.jpg",
     swatchHex: "#8C5A82",
     colors: [
-      { id: "plum-perfect", name: "Plum Perfect", finish: "Glossy", image: "/images/colors/plum-perfect.jpg", swatchHex: "#7C4A6E", number: "129" },
-      { id: "mulberry-muse", name: "Mulberry Muse", finish: "Matte", image: "/images/colors/mulberry-muse.jpg", swatchHex: "#8C5A82", number: "130" },
-      { id: "blackberry-jam", name: "Blackberry Jam", finish: "Glossy", image: "/images/colors/blackberry-jam.jpg", swatchHex: "#5B3A5C", number: "131" },
-      { id: "raspberry-rush", name: "Raspberry Rush", finish: "Shimmer", image: "/images/colors/raspberry-rush.jpg", swatchHex: "#9C3D5E", number: "132" },
-      { id: "grape-gala", name: "Grape Gala", finish: "Glossy", image: "/images/colors/grape-gala.jpg", swatchHex: "#6B4577", number: "133" },
-      { id: "violet-velvet", name: "Violet Velvet", finish: "Matte", image: "/images/colors/violet-velvet.jpg", swatchHex: "#725580", number: "134" },
-      { id: "berry-bright", name: "Berry Bright", finish: "Glitter", image: "/images/colors/berry-bright.jpg", swatchHex: "#A34B72", number: "135" },
+      { id: "a1338", name: "Double Rhythm", image: "/images/colors/berries/a1338.jpg", swatchHex: "#8E2A4C", number: "A1338" },
+      { id: "a1573", name: "Double Rhythm", image: "/images/colors/berries/a1573.jpg", swatchHex: "#B23A82", number: "A1573" },
+      { id: "a1593", name: "Double Rhythm", image: "/images/colors/berries/a1593.jpg", swatchHex: "#9C6B85", number: "A1593" },
+      { id: "a1590", name: "Double Rhythm", image: "/images/colors/berries/a1590.jpg", swatchHex: "#4B3A8F", number: "A1590" },
+      { id: "a1051", name: "Double Rhythm", image: "/images/colors/berries/a1051.jpg", swatchHex: "#7C6FC4", number: "A1051" },
+      { id: "a1589", name: "Double Rhythm", image: "/images/colors/berries/a1589.jpg", swatchHex: "#9B7FD4", number: "A1589" },
+      { id: "a1588", name: "Double Rhythm", image: "/images/colors/berries/a1588.jpg", swatchHex: "#C3B4E0", number: "A1588" },
+      { id: "strawberry-wine", name: "Strawberry Wine", image: "/images/colors/berries/strawberry-wine.jpg", swatchHex: "#6B2635", number: "DC 062" },
     ],
   },
   {
@@ -83,12 +69,21 @@ export const categories = [
     coverImage: "/images/categories/classics.jpg",
     swatchHex: "#D8D2CB",
     colors: [
-      { id: "gallery-white", name: "Gallery White", finish: "Glossy", image: "/images/colors/gallery-white.jpg", swatchHex: "#F5F3EF", number: "136" },
-      { id: "millennial-pink", name: "Millennial Pink", finish: "Matte", image: "/images/colors/millennial-pink.jpg", swatchHex: "#E4C6C6", number: "137" },
-      { id: "greige-goddess", name: "Greige Goddess", finish: "Matte", image: "/images/colors/greige-goddess.jpg", swatchHex: "#B8B0A6", number: "138" },
-      { id: "midnight-noir", name: "Midnight Noir", finish: "Glossy", image: "/images/colors/midnight-noir.jpg", swatchHex: "#2E2A28", number: "139" },
-      { id: "pearl-essence", name: "Pearl Essence", finish: "Shimmer", image: "/images/colors/pearl-essence.jpg", swatchHex: "#E8E4DC", number: "140" },
-      { id: "taupe-story", name: "Taupe Story", finish: "Matte", image: "/images/colors/taupe-story.jpg", swatchHex: "#A99C8F", number: "141" },
+      { id: "a1596", name: "Double Rhythm", image: "/images/colors/classics/a1596.jpg", swatchHex: "#D9C8C8", number: "A1596" },
+      { id: "a1347", name: "Double Rhythm", image: "/images/colors/classics/a1347.jpg", swatchHex: "#D6C2C4", number: "A1347" },
+      { id: "a1595", name: "Double Rhythm", image: "/images/colors/classics/a1595.jpg", swatchHex: "#D8C6C6", number: "A1595" },
+      { id: "a1594", name: "Double Rhythm", image: "/images/colors/classics/a1594.jpg", swatchHex: "#E3DAD6", number: "A1594" },
+      { id: "a1547", name: "Double Rhythm", image: "/images/colors/classics/a1547.jpg", swatchHex: "#D9B8BE", number: "A1547" },
+      { id: "arctic-field", name: "Arctic Field", image: "/images/colors/classics/arctic-field.jpg", swatchHex: "#A8D4DE", number: "DC 125" },
+    ],
+  },
+  {
+    id: "greens",
+    name: "Greens",
+    coverImage: "/images/categories/greens.jpg",
+    swatchHex: "#8FD14F",
+    colors: [
+      { id: "dm-cateye-002", name: "Gemstone Cat Eye", image: "/images/colors/greens/dm-cateye-002.jpg", swatchHex: "#8FD14F", number: "DM 002" },
     ],
   },
 ];

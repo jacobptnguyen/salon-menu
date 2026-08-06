@@ -30,18 +30,18 @@ A mobile-first, single-page React app customers reach by scanning a QR code at t
 | `--color-surface` | `#FFFFFF` | Card backgrounds |
 | `--color-red` | `#E8949A` | Blush red — primary accent (headers, active states, category tint) |
 | `--color-red-soft` | `#F5D4D7` | Blush red tint — backgrounds, chips, subtle highlights |
-| `--color-green` | `#A8BFA0` | Sage green — secondary accent (finish tags, dividers, secondary buttons) |
+| `--color-green` | `#A8BFA0` | Sage green — secondary accent (dividers, secondary buttons) |
 | `--color-green-soft` | `#DCE6D8` | Sage tint — backgrounds, chips |
 | `--color-text-primary` | `#2E2A28` | Headings, primary text (warm near-black, not pure black) |
-| `--color-text-secondary` | `#7A716D` | Captions, finish-type labels, secondary text |
+| `--color-text-secondary` | `#7A716D` | Captions, secondary text |
 | `--color-shadow` | `rgba(46, 42, 40, 0.08)` | Card shadows |
 
 Rules of thumb: red and green never sit directly adjacent at full saturation (avoids the classic red/green vibration that's hard on the eyes). Backgrounds stay warm-neutral; red/green appear as accents, tags, and small UI elements — never as large fields behind each other.
 
 ### Typography
 
-- **Headings / titles** (salon name, category names, color names): serif display font — **Playfair Display**. All titles are **center-aligned** at every level (category grid title, color detail title, zoom view title).
-- **Body / UI text** (finish-type labels, back button, captions): sans-serif — **Inter**.
+- All visible text — headings, category/color names, polish numbers, and the back button — uses one serif display font, **Playfair Display**, for a consistent look throughout. All titles are **center-aligned** at every level (category grid title, color detail title, zoom view title).
+- **Inter** (sans-serif) is loaded and available for any future secondary/caption text, but nothing currently uses it.
 - Load both via Google Fonts or self-hosted `@font-face`.
 - Scale: salon header ~28–32px, category card title ~20px, color detail title ~26px, zoom view title ~22px, body/labels ~14px.
 
@@ -53,9 +53,7 @@ Rules of thumb: red and green never sit directly adjacent at full saturation (av
 
 ### Motion (Framer Motion)
 
-- Category card tap → **scale/expand transition** into the color list view (shared layout animation, `layoutId` per card)
-- Color card tap → **scale/expand transition** into the zoom view
-- Back button → reverses the same transition
+- View transitions (category grid ↔ color list ↔ zoom) are a simple **crossfade** — no shared-element/scale-expand animation between views.
 - Subtle tap feedback (slight scale-down, ~0.97) on all tappable cards
 - Keep durations short (200–300ms) and easing gentle (ease-out) — motion should feel tactile, not showy
 
@@ -68,15 +66,14 @@ Level 1: Category Grid (Home)
   └─ Tap a category → Level 2
 
 Level 2: Color List (within a category)
-  ├─ Grid of individual polish color cards (image + name + finish tag)
+  ├─ Grid of individual polish color cards (image + polish number + name)
   ├─ Centered category title at top
   ├─ Persistent back button, top-left, returns to Level 1
   └─ Tap a color card → Level 3
 
 Level 3: Zoom View
   ├─ Fullscreen image, pinch/tap to zoom
-  ├─ Centered color name below/over the image
-  ├─ Finish-type tag
+  ├─ Centered polish number and name below/over the image
   ├─ Persistent back button, top-left, returns to Level 2
   └─ No CTA, no links — pure visual detail
 ```
@@ -96,28 +93,31 @@ export const categories = [
     colors: [
       {
         id: "cherry-kiss",
-        name: "Cherry Kiss",
-        finish: "Glossy", // "Glossy" | "Matte" | "Shimmer" | "Glitter"
-        number: "101", // salon's polish number, shown next to the finish tag
-        image: "/images/colors/cherry-kiss.jpg",
+        name: "Cherry Kiss", // optional — omit for bottles with no printed name (see below)
+        number: "101", // salon's polish number — shown as the primary label, since that's how customers pick a color
+        image: "/images/colors/reds/cherry-kiss.jpg",
         swatchHex: "#C23B3B" // fallback color if image is missing
       }
       // ...6-10 colors per category
     ]
   }
-  // ...4-6 categories total: e.g. Reds, Pinks, Nudes, Corals, Berries, Classics
+  // ...category families as needed to fit the real colors on hand: e.g. Reds, Pinks,
+  // Nudes, Corals, Berries, Classics — add new families (e.g. Greens) for colors
+  // that don't fit an existing one, rather than force-fitting them
 ];
 ```
 
 - Built and tested against **~4-6 categories, ~6-10 colors each** (~25-50 color entries total).
-- `finish` is restricted to: **Glossy, Matte, Shimmer, Glitter**.
 - `swatchHex` is a required fallback: until real photos are supplied, render a solid-color rounded rectangle (using this hex) in place of the image, so the app looks complete with placeholder data.
+- `name` is optional. Some bottles only have a manufacturer number printed on the cap (e.g. `"A1338"`), no product name — omit `name` for those entries and the UI falls back to displaying `number` in its place (still a real text label, so the colorblind-accessibility rule below still holds).
 
 ## Image Handling
 
+- Real photos live under `/public/images/colors/<category-id>/<slug-or-number>.jpg` — one folder per category, since the salon supplies photos in ongoing batches. Category cover photos live under `/public/images/categories/<category-id>.jpg`.
 - Real photos will be supplied by the salon later. Build now with a placeholder strategy:
   - If `image` fails to load or isn't provided, fall back to a solid-fill card using `swatchHex`.
-  - Design the `<ColorImage>` component so swapping in real photos later requires no code changes — just dropping files into `/public/images/` and updating paths in `colors.js`.
+  - Design the `<ColorImage>` component so swapping in real photos later requires no code changes — just dropping files into the matching category folder and updating paths in `colors.js`.
+  - Compress/resize real photos before committing (e.g. via `sips`) — long edge ~900px, JPEG quality ~78 keeps files well under 150KB without visible quality loss at card/zoom size.
 - Target aspect ratio: square (1:1) for category and color cards; zoom view uses the image's natural aspect ratio, fullscreen, letterboxed if needed.
 - Compress/optimize images before shipping (Vercel serves static assets as-is — no image optimization pipeline unless using Next.js `<Image>`, which is out of scope here).
 
