@@ -2,6 +2,8 @@
 
 A mobile-first web app that replaces a salon's paper color-swatch binder with a QR-code menu customers browse on their own phone. No accounts, no booking flow, no backend — just a fast, tactile browsing experience: **Categories → Colors → Zoom**.
 
+**Live demo: [salon-menu-jade.vercel.app](https://salon-menu-jade.vercel.app/)**
+
 <p align="center">
   <img src="docs/screenshots/categories.png" width="30%" alt="Category grid" />
   <img src="docs/screenshots/colors.png" width="30%" alt="Color list" />
