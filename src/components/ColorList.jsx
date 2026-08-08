@@ -24,34 +24,43 @@ const ColorList = forwardRef(function ColorList({ category, onSelectColor, onBac
           No colors to display yet
         </p>
       ) : (
-        <div className="grid grid-cols-2 gap-4">
-          {category.colors.map((color) => (
-            <motion.button
-              key={color.id}
-              type="button"
-              onClick={() => onSelectColor(color.id)}
-              whileTap={{ scale: 0.97 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="overflow-hidden rounded-card bg-surface text-left shadow-card"
-            >
-              <ColorImage
-                image={color.image}
-                swatchHex={color.swatchHex}
-                alt={color.name ?? color.number}
-                className="aspect-square w-full"
-              />
-              <div className="space-y-1 px-3 py-3">
-                <p className="font-display text-lg font-bold text-text-primary">
-                  {color.number}
-                </p>
-                {color.name && (
-                  <p className="truncate font-display text-sm font-semibold text-text-primary">
-                    {color.name}
+        <div className="grid grid-cols-3 gap-3">
+          {category.colors.map((color) => {
+            const primary = color.name ?? color.number;
+            const secondary = color.name ? color.number : null;
+            return (
+              <motion.button
+                key={color.id}
+                type="button"
+                onClick={() => onSelectColor(color.id)}
+                whileTap={{ scale: 0.97 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="overflow-hidden rounded-card bg-surface text-left shadow-card"
+              >
+                <ColorImage
+                  image={color.image}
+                  swatchHex={color.swatchHex}
+                  alt={primary}
+                  className="aspect-square w-full"
+                />
+                <div className="space-y-0.5 px-2 py-2">
+                  {color.brand && (
+                    <p className="truncate font-display text-xs font-medium uppercase tracking-wide text-black">
+                      {color.brand}
+                    </p>
+                  )}
+                  <p className="truncate font-display text-sm font-bold text-black">
+                    {primary}
                   </p>
-                )}
-              </div>
-            </motion.button>
-          ))}
+                  {secondary && (
+                    <p className="truncate font-display text-sm text-black">
+                      {secondary}
+                    </p>
+                  )}
+                </div>
+              </motion.button>
+            );
+          })}
         </div>
       )}
     </motion.div>

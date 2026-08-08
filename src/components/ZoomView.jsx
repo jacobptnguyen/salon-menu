@@ -41,12 +41,17 @@ const ZoomView = forwardRef(function ZoomView({ color, onBack }, ref) {
         </div>
 
         <div className="mt-6 flex flex-col items-center gap-1">
-          <h1 className="text-center font-display text-[28px] font-bold text-text-primary">
-            {color.number}
+          {color.brand && (
+            <p className="text-center font-display text-lg font-medium uppercase tracking-wide text-black">
+              {color.brand}
+            </p>
+          )}
+          <h1 className="text-center font-display text-[28px] font-bold text-black">
+            {color.name ?? color.number}
           </h1>
           {color.name && (
-            <p className="text-center font-display text-lg font-semibold text-text-primary">
-              {color.name}
+            <p className="text-center font-display text-xl font-semibold text-black">
+              {color.number}
             </p>
           )}
         </div>

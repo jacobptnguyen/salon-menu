@@ -93,8 +93,9 @@ export const categories = [
     colors: [
       {
         id: "cherry-kiss",
-        name: "Cherry Kiss", // optional — omit for bottles with no printed name (see below)
-        number: "101", // salon's polish number — shown as the primary label, since that's how customers pick a color
+        brand: "OPI", // optional — small caption shown above the name
+        name: "Cherry Kiss", // optional — the standout label on cards/zoom; omit for bottles with no printed name (see below)
+        number: "101", // salon's polish number — shown as a secondary label under the name
         image: "/images/colors/reds/cherry-kiss.jpg",
         swatchHex: "#C23B3B" // fallback color if image is missing
       }
@@ -109,11 +110,14 @@ export const categories = [
 
 - Built and tested against **~4-6 categories, ~6-10 colors each** (~25-50 color entries total).
 - `swatchHex` is a required fallback: until real photos are supplied, render a solid-color rounded rectangle (using this hex) in place of the image, so the app looks complete with placeholder data.
+- `brand` is optional — shown as a small uppercase caption above the name, on both the color card and the zoom view. Omit for placeholder/unbranded entries.
 - `name` is optional. Some bottles only have a manufacturer number printed on the cap (e.g. `"A1338"`), no product name — omit `name` for those entries and the UI falls back to displaying `number` in its place (still a real text label, so the colorblind-accessibility rule below still holds).
+- Display hierarchy: `name` (or `number` when `name` is absent) is the standout label — larger, bolder. `number` is secondary — smaller, muted — and only shown alongside `name` when both are present.
 
 ## Image Handling
 
-- Real photos live under `/public/images/colors/<category-id>/<slug-or-number>.jpg` — one folder per category, since the salon supplies photos in ongoing batches. Category cover photos live under `/public/images/categories/<category-id>.jpg`.
+- Real photos live under `/public/images/colors/<category-id>/<filename>.jpg` — one folder per category, since the salon supplies photos in ongoing batches. Category cover photos live under `/public/images/categories/<category-id>.jpg`.
+- Photos are being uploaded one at a time. Each filename encodes `brand-name-number` (e.g. `opi-bubble-bath-s86.jpg` for brand OPI, name "Bubble Bath", number S86) — parse the filename to fill in `name`/`number` in `colors.js` when wiring up a newly uploaded photo, and replace the matching `TBD-#` placeholder entry in that category rather than adding a new one.
 - Real photos will be supplied by the salon later. Build now with a placeholder strategy:
   - If `image` fails to load or isn't provided, fall back to a solid-fill card using `swatchHex`.
   - Design the `<ColorImage>` component so swapping in real photos later requires no code changes — just dropping files into the matching category folder and updating paths in `colors.js`.

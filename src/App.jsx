@@ -11,9 +11,14 @@ export default function App() {
   const [selectedColorId, setSelectedColorId] = useState(null);
   const prefersReducedMotion = useReducedMotion();
 
+  const visibleCategories = useMemo(
+    () => categories.filter((c) => c.colors.length > 0),
+    []
+  );
+
   const selectedCategory = useMemo(
-    () => categories.find((c) => c.id === selectedCategoryId) ?? null,
-    [selectedCategoryId]
+    () => visibleCategories.find((c) => c.id === selectedCategoryId) ?? null,
+    [visibleCategories, selectedCategoryId]
   );
 
   const selectedColor = useMemo(
@@ -32,7 +37,7 @@ export default function App() {
         {view === "categories" && (
           <CategoryGrid
             key="categories"
-            categories={categories}
+            categories={visibleCategories}
             onSelectCategory={setSelectedCategoryId}
           />
         )}
