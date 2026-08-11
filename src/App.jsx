@@ -12,7 +12,7 @@ export default function App() {
   const prefersReducedMotion = useReducedMotion();
 
   const visibleCategories = useMemo(
-    () => categories.filter((c) => c.colors.length > 0),
+    () => categories.filter((c) => c.collections.some((collection) => collection.colors.length > 0)),
     []
   );
 
@@ -21,10 +21,14 @@ export default function App() {
     [visibleCategories, selectedCategoryId]
   );
 
-  const selectedColor = useMemo(
-    () => selectedCategory?.colors.find((c) => c.id === selectedColorId) ?? null,
-    [selectedCategory, selectedColorId]
-  );
+  const selectedColor = useMemo(() => {
+    if (!selectedCategory) return null;
+    for (const collection of selectedCategory.collections) {
+      const color = collection.colors.find((c) => c.id === selectedColorId);
+      if (color) return { ...color, brand: collection.brand, collection: collection.name };
+    }
+    return null;
+  }, [selectedCategory, selectedColorId]);
 
   let view = "categories";
   if (selectedCategory && selectedColor) view = "zoom";

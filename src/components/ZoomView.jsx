@@ -46,6 +46,11 @@ const ZoomView = forwardRef(function ZoomView({ color, onBack }, ref) {
               {color.brand}
             </p>
           )}
+          {color.collection && (
+            <p className="text-center font-display text-base font-medium text-black">
+              {color.collection}
+            </p>
+          )}
           <h1 className="text-center font-display text-[28px] font-bold text-black">
             {color.name ?? color.number}
           </h1>

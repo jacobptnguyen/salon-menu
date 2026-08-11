@@ -4,6 +4,8 @@ import ColorImage from "./ColorImage.jsx";
 import BackButton from "./BackButton.jsx";
 
 const ColorList = forwardRef(function ColorList({ category, onSelectColor, onBack }, ref) {
+  const collections = category.collections.filter((collection) => collection.colors.length > 0);
+
   return (
     <motion.div
       ref={ref}
@@ -19,48 +21,55 @@ const ColorList = forwardRef(function ColorList({ category, onSelectColor, onBac
         {category.name}
       </h1>
 
-      {category.colors.length === 0 ? (
+      {collections.length === 0 ? (
         <p className="mt-16 text-center font-display text-lg text-text-secondary">
           No colors to display yet
         </p>
       ) : (
-        <div className="grid grid-cols-3 gap-3">
-          {category.colors.map((color) => {
-            const primary = color.name ?? color.number;
-            const secondary = color.name ? color.number : null;
-            return (
-              <motion.button
-                key={color.id}
-                type="button"
-                onClick={() => onSelectColor(color.id)}
-                whileTap={{ scale: 0.97 }}
-                transition={{ duration: 0.25, ease: "easeOut" }}
-                className="overflow-hidden rounded-card bg-surface text-left shadow-card"
-              >
-                <ColorImage
-                  image={color.image}
-                  swatchHex={color.swatchHex}
-                  alt={primary}
-                  className="aspect-square w-full"
-                />
-                <div className="space-y-0.5 px-2 py-2">
-                  {color.brand && (
-                    <p className="truncate font-display text-xs font-medium uppercase tracking-wide text-black">
-                      {color.brand}
-                    </p>
-                  )}
-                  <p className="truncate font-display text-sm font-bold text-black">
-                    {primary}
+        <div className="space-y-8">
+          {collections.map((collection) => (
+            <div key={collection.id}>
+              <div className="mb-3">
+                {collection.brand && (
+                  <p className="font-display text-xs font-medium uppercase tracking-wide text-black">
+                    {collection.brand}
                   </p>
-                  {secondary && (
-                    <p className="truncate font-display text-sm text-black">
-                      {secondary}
-                    </p>
-                  )}
-                </div>
-              </motion.button>
-            );
-          })}
+                )}
+                <h2 className="font-display text-lg font-bold text-black">{collection.name}</h2>
+              </div>
+              <div className="grid grid-cols-3 gap-3">
+                {collection.colors.map((color) => {
+                  const primary = color.name ?? color.number;
+                  const secondary = color.name ? color.number : null;
+                  return (
+                    <motion.button
+                      key={color.id}
+                      type="button"
+                      onClick={() => onSelectColor(color.id)}
+                      whileTap={{ scale: 0.97 }}
+                      transition={{ duration: 0.25, ease: "easeOut" }}
+                      className="overflow-hidden rounded-card bg-surface text-left shadow-card"
+                    >
+                      <ColorImage
+                        image={color.image}
+                        swatchHex={color.swatchHex}
+                        alt={primary}
+                        className="aspect-square w-full"
+                      />
+                      <div className="space-y-0.5 px-2 py-2">
+                        <p className="truncate font-display text-sm font-bold text-black">
+                          {primary}
+                        </p>
+                        {secondary && (
+                          <p className="truncate font-display text-sm text-black">{secondary}</p>
+                        )}
+                      </div>
+                    </motion.button>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </div>
       )}
     </motion.div>
