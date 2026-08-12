@@ -39,20 +39,6 @@ export const categories = [
           { id: "double-rhythm-a1312", number: "A1312", image: "/images/colors/pinks/double-rhythm-bright-pink-a1312.jpg", swatchHex: "#7F4048" },
           { id: "double-rhythm-a1337", number: "A1337", image: "/images/colors/pinks/double-rhythm-bright-pink-a1337.jpg", swatchHex: "#B4717A" },
           { id: "double-rhythm-a1338", number: "A1338", image: "/images/colors/pinks/double-rhythm-bright-pink-a1338.jpg", swatchHex: "#553334" },
-          { id: "double-rhythm-a1586", number: "A1586", image: "/images/colors/pinks/double-rhythm-bright-pink-a1586.jpg", swatchHex: "#AB9086" },
-        ],
-      },
-      {
-        id: "double-rhythm-nude-pink",
-        brand: "Double Rhythm",
-        name: "Nude Pink",
-        colors: [
-          { id: "double-rhythm-mc1019", number: "MC1019", image: "/images/colors/pinks/double-rhythm-nude-pink-mc1019.jpg", swatchHex: "#A1A095" },
-          { id: "double-rhythm-mc1020", number: "MC1020", image: "/images/colors/pinks/double-rhythm-nude-pink-mc1020.jpg", swatchHex: "#989287" },
-          { id: "double-rhythm-mc1021", number: "MC1021", image: "/images/colors/pinks/double-rhythm-nude-pink-mc1021.jpg", swatchHex: "#9B9086" },
-          { id: "double-rhythm-mc1022", number: "MC1022", image: "/images/colors/pinks/double-rhythm-nude-pink-mc1022.jpg", swatchHex: "#A69991" },
-          { id: "double-rhythm-mc1023", number: "MC1023", image: "/images/colors/pinks/double-rhythm-nude-pink-mc1023.jpg", swatchHex: "#9D9188" },
-          { id: "double-rhythm-mc1024", number: "MC1024", image: "/images/colors/pinks/double-rhythm-nude-pink-mc1024.jpg", swatchHex: "#A08681" },
         ],
       },
       {
@@ -84,6 +70,19 @@ export const categories = [
     name: "Nudes",
     swatchHex: "#D9C2A8",
     collections: [
+      {
+        id: "double-rhythm-nude-pink",
+        brand: "Double Rhythm",
+        name: "Nude Pink",
+        colors: [
+          { id: "double-rhythm-mc1019", number: "MC1019", image: "/images/colors/nudes/double-rhythm-nude-pink-mc1019.jpg", swatchHex: "#A1A095" },
+          { id: "double-rhythm-mc1020", number: "MC1020", image: "/images/colors/nudes/double-rhythm-nude-pink-mc1020.jpg", swatchHex: "#989287" },
+          { id: "double-rhythm-mc1021", number: "MC1021", image: "/images/colors/nudes/double-rhythm-nude-pink-mc1021.jpg", swatchHex: "#9B9086" },
+          { id: "double-rhythm-mc1022", number: "MC1022", image: "/images/colors/nudes/double-rhythm-nude-pink-mc1022.jpg", swatchHex: "#A69991" },
+          { id: "double-rhythm-mc1023", number: "MC1023", image: "/images/colors/nudes/double-rhythm-nude-pink-mc1023.jpg", swatchHex: "#9D9188" },
+          { id: "double-rhythm-mc1024", number: "MC1024", image: "/images/colors/nudes/double-rhythm-nude-pink-mc1024.jpg", swatchHex: "#A08681" },
+        ],
+      },
       {
         id: "double-rhythm-ivory-by-cream",
         brand: "Double Rhythm",
@@ -143,6 +142,7 @@ export const categories = [
           { id: "double-rhythm-a1051", number: "A1051", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1051.jpg", swatchHex: "#6F7479" },
           { id: "double-rhythm-a1054", number: "A1054", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1054.jpg", swatchHex: "#AF9891" },
           { id: "double-rhythm-a1541", number: "A1541", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1541.jpg", swatchHex: "#A69D91" },
+          { id: "double-rhythm-a1586", number: "A1586", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1586.jpg", swatchHex: "#73627F" },
           { id: "double-rhythm-a1588", number: "A1588", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1588.jpg", swatchHex: "#8F8F8F" },
           { id: "double-rhythm-a1589", number: "A1589", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1589.jpg", swatchHex: "#7D7077" },
           { id: "double-rhythm-a1590", number: "A1590", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1590.jpg", swatchHex: "#4E514A" },

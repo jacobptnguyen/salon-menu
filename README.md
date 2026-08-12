@@ -1,4 +1,4 @@
-# LA Salon & Spa — Digital Nail Polish Menu
+# Digital Nail Polish Menu
 
 A mobile-first web app that replaces a salon's paper color-swatch binder with a QR-code menu customers browse on their own phone. No accounts, no booking flow, no backend — just a fast, tactile browsing experience: **Categories → Colors → Zoom**.
 
