@@ -16,13 +16,143 @@
 // A category with no collections (or only empty ones) is hidden from the
 // category grid entirely (see App.jsx) rather than shown with placeholder
 // colors — add real entries here once photos come in and it'll reappear.
+//
+// Category order follows a color wheel (Reds → Corals → Golds → Greens →
+// Berries → Pinks, wrapping back toward Reds), then the two neutral
+// buckets (Nudes, Classics), then the two effect-based categories
+// (Thermal, Shimmer) last since they're grouped by finish, not hue.
 
 export const categories = [
   {
     id: "reds",
     name: "Reds",
     swatchHex: "#C23B3B",
-    collections: [],
+    collections: [
+      {
+        id: "chance-by-cre8tion-hello-autumn",
+        brand: "CHANCE by Cre8tion",
+        name: "HELLO AUTUMN",
+        colors: [
+          { id: "cbc-hello-autumn-190", number: "190", image: "/images/colors/reds/chance-by-cre8tion-hello-autumn-190.jpg", swatchHex: "#802F25" },
+          { id: "cbc-hello-autumn-191", number: "191", image: "/images/colors/reds/chance-by-cre8tion-hello-autumn-191.jpg", swatchHex: "#853425" },
+          { id: "cbc-hello-autumn-192", number: "192", image: "/images/colors/reds/chance-by-cre8tion-hello-autumn-192.jpg", swatchHex: "#6B2620" },
+          { id: "cbc-hello-autumn-197", number: "197", image: "/images/colors/reds/chance-by-cre8tion-hello-autumn-197.jpg", swatchHex: "#882F28" },
+          { id: "cbc-hello-autumn-196", number: "196", image: "/images/colors/reds/chance-by-cre8tion-hello-autumn-196.jpg", swatchHex: "#A94C47" },
+          { id: "cbc-hello-autumn-324", number: "324", image: "/images/colors/reds/chance-by-cre8tion-hello-autumn-324.jpg", swatchHex: "#3E150C" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "corals",
+    name: "Corals",
+    swatchHex: "#F2836B",
+    collections: [
+      {
+        id: "chance-by-cre8tion-hello-autumn",
+        brand: "CHANCE by Cre8tion",
+        name: "HELLO AUTUMN",
+        colors: [
+          { id: "cbc-hello-autumn-181", number: "181", image: "/images/colors/corals/chance-by-cre8tion-hello-autumn-181.jpg", swatchHex: "#BF4E3D" },
+          { id: "cbc-hello-autumn-182", number: "182", image: "/images/colors/corals/chance-by-cre8tion-hello-autumn-182.jpg", swatchHex: "#A74E35" },
+          { id: "cbc-hello-autumn-186", number: "186", image: "/images/colors/corals/chance-by-cre8tion-hello-autumn-186.jpg", swatchHex: "#CF573B" },
+          { id: "cbc-hello-autumn-187", number: "187", image: "/images/colors/corals/chance-by-cre8tion-hello-autumn-187.jpg", swatchHex: "#D0583E" },
+          { id: "cbc-hello-autumn-188", number: "188", image: "/images/colors/corals/chance-by-cre8tion-hello-autumn-188.jpg", swatchHex: "#C67F57" },
+          { id: "cbc-hello-autumn-198", number: "198", image: "/images/colors/corals/chance-by-cre8tion-hello-autumn-198.jpg", swatchHex: "#92392D" },
+          { id: "cbc-hello-autumn-301", number: "301", image: "/images/colors/corals/chance-by-cre8tion-hello-autumn-301.jpg", swatchHex: "#E4966D" },
+          { id: "cbc-hello-autumn-302", number: "302", image: "/images/colors/corals/chance-by-cre8tion-hello-autumn-302.jpg", swatchHex: "#A86543" },
+          { id: "cbc-hello-autumn-303", number: "303", image: "/images/colors/corals/chance-by-cre8tion-hello-autumn-303.jpg", swatchHex: "#AD5533" },
+          { id: "cbc-hello-autumn-319", number: "319", image: "/images/colors/corals/chance-by-cre8tion-hello-autumn-319.jpg", swatchHex: "#9F5838" },
+          { id: "cbc-hello-autumn-322", number: "322", image: "/images/colors/corals/chance-by-cre8tion-hello-autumn-322.jpg", swatchHex: "#885528" },
+        ],
+      },
+      {
+        id: "dnd-sheer-collection-2023",
+        brand: "DND",
+        name: "Sheer Collection 2023",
+        colors: [
+          { id: "dnd-886", name: "Pray For Peach", number: "886", image: "/images/colors/corals/dnd-sheer-collection-2023-pray-for-peach-886.jpg", swatchHex: "#B27E72" },
+          { id: "dnd-887", name: "Glass Peach", number: "887", image: "/images/colors/corals/dnd-sheer-collection-2023-glass-peach-887.jpg", swatchHex: "#895A4C" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "golds",
+    name: "Golds",
+    swatchHex: "#CB9D4A",
+    collections: [
+      {
+        id: "chance-by-cre8tion-hello-autumn",
+        brand: "CHANCE by Cre8tion",
+        name: "HELLO AUTUMN",
+        colors: [
+          { id: "cbc-hello-autumn-184", number: "184", image: "/images/colors/golds/chance-by-cre8tion-hello-autumn-184.jpg", swatchHex: "#CB9D4A" },
+          { id: "cbc-hello-autumn-185", number: "185", image: "/images/colors/golds/chance-by-cre8tion-hello-autumn-185.jpg", swatchHex: "#D1A842" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "greens",
+    name: "Greens",
+    swatchHex: "#6B542B",
+    collections: [
+      {
+        id: "chance-by-cre8tion-hello-autumn",
+        brand: "CHANCE by Cre8tion",
+        name: "HELLO AUTUMN",
+        colors: [
+          { id: "cbc-hello-autumn-320", number: "320", image: "/images/colors/greens/chance-by-cre8tion-hello-autumn-320.jpg", swatchHex: "#6B542B" },
+          { id: "cbc-hello-autumn-321", number: "321", image: "/images/colors/greens/chance-by-cre8tion-hello-autumn-321.jpg", swatchHex: "#5B4A26" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "berries",
+    name: "Berries",
+    swatchHex: "#8C5A82",
+    collections: [
+      {
+        id: "chance-by-cre8tion-hello-autumn",
+        brand: "CHANCE by Cre8tion",
+        name: "HELLO AUTUMN",
+        colors: [
+          { id: "cbc-hello-autumn-127", number: "127", image: "/images/colors/berries/chance-by-cre8tion-hello-autumn-127.jpg", swatchHex: "#65231C" },
+          { id: "cbc-hello-autumn-193", number: "193", image: "/images/colors/berries/chance-by-cre8tion-hello-autumn-193.jpg", swatchHex: "#3C1C17" },
+          { id: "cbc-hello-autumn-194", number: "194", image: "/images/colors/berries/chance-by-cre8tion-hello-autumn-194.jpg", swatchHex: "#54302B" },
+          { id: "cbc-hello-autumn-235", number: "235", image: "/images/colors/berries/chance-by-cre8tion-hello-autumn-235.jpg", swatchHex: "#753C34" },
+          { id: "cbc-hello-autumn-312", number: "312", image: "/images/colors/berries/chance-by-cre8tion-hello-autumn-312.jpg", swatchHex: "#362D29" },
+          { id: "cbc-hello-autumn-323", number: "323", image: "/images/colors/berries/chance-by-cre8tion-hello-autumn-323.jpg", swatchHex: "#361D14" },
+        ],
+      },
+      {
+        id: "double-rhythm-lavender-by-purple",
+        brand: "Double Rhythm",
+        name: "Lavender By Purple",
+        colors: [
+          { id: "double-rhythm-a1051", number: "A1051", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1051.jpg", swatchHex: "#6F7479" },
+          { id: "double-rhythm-a1054", number: "A1054", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1054.jpg", swatchHex: "#AF9891" },
+          { id: "double-rhythm-a1541", number: "A1541", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1541.jpg", swatchHex: "#A69D91" },
+          { id: "double-rhythm-a1586", number: "A1586", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1586.jpg", swatchHex: "#73627F" },
+          { id: "double-rhythm-a1588", number: "A1588", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1588.jpg", swatchHex: "#8F8F8F" },
+          { id: "double-rhythm-a1589", number: "A1589", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1589.jpg", swatchHex: "#7D7077" },
+          { id: "double-rhythm-a1590", number: "A1590", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1590.jpg", swatchHex: "#4E514A" },
+        ],
+      },
+      {
+        id: "dnd-sheer-collection-2023",
+        brand: "DND",
+        name: "Sheer Collection 2023",
+        colors: [
+          { id: "dnd-874", name: "Loss Lavender", number: "874", image: "/images/colors/berries/dnd-sheer-collection-2023-loss-lavender-874.jpg", swatchHex: "#A48B95" },
+          { id: "dnd-875", name: "California Dreamin'", number: "875", image: "/images/colors/berries/dnd-sheer-collection-2023-california-dreamin-875.jpg", swatchHex: "#A8929B" },
+          { id: "dnd-890", name: "Romantic Lover", number: "890", image: "/images/colors/berries/dnd-sheer-collection-2023-romantic-lover-890.jpg", swatchHex: "#6A3131" },
+          { id: "dnd-892", name: "Berry Groove", number: "892", image: "/images/colors/berries/dnd-sheer-collection-2023-berry-groove-892.jpg", swatchHex: "#62302F" },
+        ],
+      },
+    ],
   },
   {
     id: "pinks",
@@ -71,6 +201,22 @@ export const categories = [
     swatchHex: "#D9C2A8",
     collections: [
       {
+        id: "chance-by-cre8tion-hello-autumn",
+        brand: "CHANCE by Cre8tion",
+        name: "HELLO AUTUMN",
+        colors: [
+          { id: "cbc-hello-autumn-183", number: "183", image: "/images/colors/nudes/chance-by-cre8tion-hello-autumn-183.jpg", swatchHex: "#6D5A43" },
+          { id: "cbc-hello-autumn-189", number: "189", image: "/images/colors/nudes/chance-by-cre8tion-hello-autumn-189.jpg", swatchHex: "#7F4937" },
+          { id: "cbc-hello-autumn-195", number: "195", image: "/images/colors/nudes/chance-by-cre8tion-hello-autumn-195.jpg", swatchHex: "#8E4435" },
+          { id: "cbc-hello-autumn-214", number: "214", image: "/images/colors/nudes/chance-by-cre8tion-hello-autumn-214.jpg", swatchHex: "#594E48" },
+          { id: "cbc-hello-autumn-215", number: "215", image: "/images/colors/nudes/chance-by-cre8tion-hello-autumn-215.jpg", swatchHex: "#785C54" },
+          { id: "cbc-hello-autumn-216", number: "216", image: "/images/colors/nudes/chance-by-cre8tion-hello-autumn-216.jpg", swatchHex: "#6F5948" },
+          { id: "cbc-hello-autumn-304", number: "304", image: "/images/colors/nudes/chance-by-cre8tion-hello-autumn-304.jpg", swatchHex: "#884836" },
+          { id: "cbc-hello-autumn-305", number: "305", image: "/images/colors/nudes/chance-by-cre8tion-hello-autumn-305.jpg", swatchHex: "#613D30" },
+          { id: "cbc-hello-autumn-306", number: "306", image: "/images/colors/nudes/chance-by-cre8tion-hello-autumn-306.jpg", swatchHex: "#65372B" },
+        ],
+      },
+      {
         id: "double-rhythm-nude-pink",
         brand: "Double Rhythm",
         name: "Nude Pink",
@@ -114,54 +260,6 @@ export const categories = [
     ],
   },
   {
-    id: "corals",
-    name: "Corals",
-    swatchHex: "#F2836B",
-    collections: [
-      {
-        id: "dnd-sheer-collection-2023",
-        brand: "DND",
-        name: "Sheer Collection 2023",
-        colors: [
-          { id: "dnd-886", name: "Pray For Peach", number: "886", image: "/images/colors/corals/dnd-sheer-collection-2023-pray-for-peach-886.jpg", swatchHex: "#B27E72" },
-          { id: "dnd-887", name: "Glass Peach", number: "887", image: "/images/colors/corals/dnd-sheer-collection-2023-glass-peach-887.jpg", swatchHex: "#895A4C" },
-        ],
-      },
-    ],
-  },
-  {
-    id: "berries",
-    name: "Berries",
-    swatchHex: "#8C5A82",
-    collections: [
-      {
-        id: "double-rhythm-lavender-by-purple",
-        brand: "Double Rhythm",
-        name: "Lavender By Purple",
-        colors: [
-          { id: "double-rhythm-a1051", number: "A1051", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1051.jpg", swatchHex: "#6F7479" },
-          { id: "double-rhythm-a1054", number: "A1054", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1054.jpg", swatchHex: "#AF9891" },
-          { id: "double-rhythm-a1541", number: "A1541", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1541.jpg", swatchHex: "#A69D91" },
-          { id: "double-rhythm-a1586", number: "A1586", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1586.jpg", swatchHex: "#73627F" },
-          { id: "double-rhythm-a1588", number: "A1588", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1588.jpg", swatchHex: "#8F8F8F" },
-          { id: "double-rhythm-a1589", number: "A1589", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1589.jpg", swatchHex: "#7D7077" },
-          { id: "double-rhythm-a1590", number: "A1590", image: "/images/colors/berries/double-rhythm-lavender-by-purple-a1590.jpg", swatchHex: "#4E514A" },
-        ],
-      },
-      {
-        id: "dnd-sheer-collection-2023",
-        brand: "DND",
-        name: "Sheer Collection 2023",
-        colors: [
-          { id: "dnd-874", name: "Loss Lavender", number: "874", image: "/images/colors/berries/dnd-sheer-collection-2023-loss-lavender-874.jpg", swatchHex: "#A48B95" },
-          { id: "dnd-875", name: "California Dreamin'", number: "875", image: "/images/colors/berries/dnd-sheer-collection-2023-california-dreamin-875.jpg", swatchHex: "#A8929B" },
-          { id: "dnd-890", name: "Romantic Lover", number: "890", image: "/images/colors/berries/dnd-sheer-collection-2023-romantic-lover-890.jpg", swatchHex: "#6A3131" },
-          { id: "dnd-892", name: "Berry Groove", number: "892", image: "/images/colors/berries/dnd-sheer-collection-2023-berry-groove-892.jpg", swatchHex: "#62302F" },
-        ],
-      },
-    ],
-  },
-  {
     id: "classics",
     name: "Classics",
     swatchHex: "#D8D2CB",
@@ -180,12 +278,6 @@ export const categories = [
         ],
       },
     ],
-  },
-  {
-    id: "greens",
-    name: "Greens",
-    swatchHex: "#8FD14F",
-    collections: [],
   },
   {
     id: "thermal",

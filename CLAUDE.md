@@ -108,6 +108,8 @@ export const categories = [
 ];
 ```
 
+- **Category order matters and must stay sorted.** The `categories` array order is what renders on the home grid, so it should always read as a color wheel: hue-based categories run Reds → Corals → Golds → Greens → Berries → Pinks (wrapping back toward Reds), followed by the neutral buckets (Nudes, Classics), followed by effect-based categories that aren't grouped by hue (Thermal, Shimmer, and similar future ones) last. When adding a new category, insert it in wheel position rather than appending it to the end — resort the whole array if the addition changes where things belong.
+
 - Built and tested against **~4-6 categories, ~6-10 colors each** (~25-50 color entries total).
 - `swatchHex` is a required fallback: until real photos are supplied, render a solid-color rounded rectangle (using this hex) in place of the image, so the app looks complete with placeholder data.
 - `brand` is optional — shown as a small uppercase caption above the name, on both the color card and the zoom view. Omit for placeholder/unbranded entries.
