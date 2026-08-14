@@ -42,7 +42,7 @@ const ZoomView = forwardRef(function ZoomView({ color, onBack }, ref) {
 
         <div className="mt-6 flex flex-col items-center gap-1">
           {color.brand && (
-            <p className="text-center font-display text-lg font-medium uppercase tracking-wide text-black">
+            <p className="text-center font-display text-2xl font-bold uppercase tracking-wide text-black">
               {color.brand}
             </p>
           )}

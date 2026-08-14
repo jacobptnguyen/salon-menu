@@ -31,7 +31,7 @@ const ColorList = forwardRef(function ColorList({ category, onSelectColor, onBac
             <div key={collection.id}>
               <div className="mb-3">
                 {collection.brand && (
-                  <p className="font-display text-xs font-medium uppercase tracking-wide text-black">
+                  <p className="font-display text-sm font-bold uppercase tracking-wide text-black">
                     {collection.brand}
                   </p>
                 )}

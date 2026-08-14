@@ -30,6 +30,7 @@ const CategoryGrid = forwardRef(function CategoryGrid({ categories, onSelectCate
               image={category.coverImage}
               swatchHex={category.swatchHex}
               alt={category.name}
+              shimmer={category.id === "shimmer"}
               className="aspect-square w-full"
             />
             <div className="px-3 py-3">

@@ -23,6 +23,15 @@ export default {
       borderRadius: {
         card: "18px",
       },
+      keyframes: {
+        shimmer: {
+          "0%": { backgroundPosition: "-150% 0" },
+          "100%": { backgroundPosition: "150% 0" },
+        },
+      },
+      animation: {
+        shimmer: "shimmer 2.2s ease-in-out infinite",
+      },
     },
   },
   plugins: [],
