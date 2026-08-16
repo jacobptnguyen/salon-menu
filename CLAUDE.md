@@ -43,7 +43,7 @@ Rules of thumb: red and green never sit directly adjacent at full saturation (av
 - All visible text — headings, category/color names, polish numbers, and the back button — uses one serif display font, **Playfair Display**, for a consistent look throughout. All titles are **center-aligned** at every level (category grid title, color detail title, zoom view title).
 - **Inter** (sans-serif) is loaded and available for any future secondary/caption text, but nothing currently uses it.
 - Load both via Google Fonts or self-hosted `@font-face`.
-- Scale: salon header ~28–32px, category card title ~20px, color detail title ~26px, zoom view title ~22px, body/labels ~14px.
+- Scale: salon header ~28–32px, category card title ~15px, color detail title ~26px, zoom view title ~22px, body/labels ~14px.
 
 ### Shape & Elevation
 
@@ -61,7 +61,8 @@ Rules of thumb: red and green never sit directly adjacent at full saturation (av
 
 ```
 Level 1: Category Grid (Home)
-  ├─ 2-column grid of large image cards, one per color family
+  ├─ 3-column grid of image cards, one per color family (chosen to fit more
+  │  categories above the fold — see Category order below)
   ├─ Salon name "LA Salon & Spa" as centered header (Playfair Display)
   └─ Tap a category → Level 2
 
@@ -108,7 +109,11 @@ export const categories = [
 ];
 ```
 
-- **Category order matters and must stay sorted.** The `categories` array order is what renders on the home grid, so it should always read as a color wheel: hue-based categories run Reds → Corals → Golds → Greens → Berries → Pinks (wrapping back toward Reds), followed by the neutral buckets (Nudes, Classics), followed by effect-based categories that aren't grouped by hue (Thermal, Shimmer, and similar future ones) last. When adding a new category, insert it in wheel position rather than appending it to the end — resort the whole array if the addition changes where things belong.
+- **Category order matters and must stay sorted — currently by color count, descending (as of 2026-08-14).** The `categories` array order is what renders on the home grid (now a 3-column grid), so the categories with the most colors come first — the goal is that the biggest/most-common categories never get buried below the fold. To resort: for each category, sum `colors.length` across every collection, then sort the array descending by that total. This is a deliberate, temporary override of an earlier color-wheel ordering (Reds → Corals → Golds → Greens → Berries → Pinks → neutrals → effects) — if a future request asks to bring wheel-ordering back, re-derive it rather than assuming the count-based order should stay forever.
+
+  Which category a *color* belongs to is a separate question from array order, and is still governed by hue/finish, not count: hue families (Reds, Corals, Golds, Greens, Berries, Pinks) group by actual photographed color; Nudes/Classics/Grays are the three neutral buckets (Nudes — warm/skin-tone; Classics — pale ivories/whites; Grays — true black-to-gray, no skin-tone hue); Thermal/Shimmer group by finish/effect, not hue.
+
+  "Nude" specifically means it approximates skin tone — beige, tan, brown (including deep espresso), soft pink, peach, taupe. Black and gray are not skin tones and read as bold/graphic rather than "your nail, but polished," so low-saturation dark colors (true charcoal/black/gunmetal, no discernible warm hue) belong in Grays, not Nudes, even if the source photo has a brownish cast from warm lighting — check the actual saturation, not just the vibe of the thumbnail.
 
 - Built and tested against **~4-6 categories, ~6-10 colors each** (~25-50 color entries total).
 - `swatchHex` is a required fallback: until real photos are supplied, render a solid-color rounded rectangle (using this hex) in place of the image, so the app looks complete with placeholder data.

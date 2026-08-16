@@ -16,7 +16,7 @@ const CategoryGrid = forwardRef(function CategoryGrid({ categories, onSelectCate
         LA Salon &amp; Spa
       </h1>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-3 gap-3">
         {categories.map((category) => (
           <motion.button
             key={category.id}
@@ -33,8 +33,8 @@ const CategoryGrid = forwardRef(function CategoryGrid({ categories, onSelectCate
               shimmer={category.id === "shimmer"}
               className="aspect-square w-full"
             />
-            <div className="px-3 py-3">
-              <h2 className="text-center font-display text-[20px] font-medium text-text-primary">
+            <div className="px-2 py-2">
+              <h2 className="text-center font-display text-[15px] font-medium leading-tight text-text-primary">
                 {category.name}
               </h2>
             </div>
