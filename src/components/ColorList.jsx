@@ -1,9 +1,11 @@
 import { forwardRef } from "react";
 import { motion } from "framer-motion";
 import ColorImage from "./ColorImage.jsx";
+import NailShapeIcon from "./NailShapeIcon.jsx";
+import SelectionBadge from "./SelectionBadge.jsx";
 import BackButton from "./BackButton.jsx";
 
-const ColorList = forwardRef(function ColorList({ category, onSelectColor, onBack }, ref) {
+const ColorList = forwardRef(function ColorList({ category, selectedShape, onSelectColor, onBack }, ref) {
   const collections = category.collections.filter((collection) => collection.colors.length > 0);
 
   return (
@@ -17,12 +19,31 @@ const ColorList = forwardRef(function ColorList({ category, onSelectColor, onBac
     >
       <BackButton onClick={onBack} label="Categories" />
 
-      <h1 className="mb-6 text-center font-display text-[26px] font-semibold text-text-primary">
-        {category.name}
+      {selectedShape && (
+        <div className="fixed top-4 right-4 z-20 flex flex-col items-end gap-2">
+          <SelectionBadge
+            icon={<NailShapeIcon shape={selectedShape} className="h-5 w-5 shrink-0" />}
+            label={selectedShape.name}
+          />
+          <SelectionBadge
+            icon={
+              <span
+                aria-hidden="true"
+                className="h-3.5 w-3.5 shrink-0 rounded-full"
+                style={{ backgroundColor: category.swatchHex }}
+              />
+            }
+            label={category.name}
+          />
+        </div>
+      )}
+
+      <h1 className="mb-6 mt-14 text-center font-display text-[26px] font-semibold text-black">
+        Choose a Color
       </h1>
 
       {collections.length === 0 ? (
-        <p className="mt-16 text-center font-display text-lg text-text-secondary">
+        <p className="mt-16 text-center font-display text-lg text-black">
           No colors to display yet
         </p>
       ) : (

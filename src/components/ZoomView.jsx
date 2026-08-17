@@ -1,9 +1,10 @@
 import { useState, forwardRef } from "react";
 import { motion } from "framer-motion";
 import ColorImage from "./ColorImage.jsx";
+import NailShapeIcon from "./NailShapeIcon.jsx";
 import BackButton from "./BackButton.jsx";
 
-const ZoomView = forwardRef(function ZoomView({ color, onBack }, ref) {
+const ZoomView = forwardRef(function ZoomView({ color, selectedShape, onBack }, ref) {
   const [zoomed, setZoomed] = useState(false);
 
   return (
@@ -18,29 +19,42 @@ const ZoomView = forwardRef(function ZoomView({ color, onBack }, ref) {
       <BackButton onClick={onBack} label="Colors" />
 
       <div className="flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-20">
-        <div
-          className="w-full max-w-sm overflow-hidden rounded-card shadow-card"
-          onClick={() => setZoomed((z) => !z)}
-        >
-          <motion.div
-            animate={{ scale: zoomed ? 1.8 : 1 }}
-            drag={zoomed}
-            dragConstraints={{ left: -120, right: 120, top: -120, bottom: 120 }}
-            dragElastic={0.15}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="cursor-zoom-in"
-            style={{ cursor: zoomed ? "grab" : "zoom-in" }}
+        <div className="flex w-full max-w-sm items-center gap-3">
+          <div
+            className="flex-1 overflow-hidden rounded-card shadow-card"
+            onClick={() => setZoomed((z) => !z)}
           >
-            <ColorImage
-              image={color.image}
-              swatchHex={color.swatchHex}
-              alt={color.name ?? color.number}
-              className="aspect-square w-full"
-            />
-          </motion.div>
+            <motion.div
+              animate={{ scale: zoomed ? 1.8 : 1 }}
+              drag={zoomed}
+              dragConstraints={{ left: -120, right: 120, top: -120, bottom: 120 }}
+              dragElastic={0.15}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="cursor-zoom-in"
+              style={{ cursor: zoomed ? "grab" : "zoom-in" }}
+            >
+              <ColorImage
+                image={color.image}
+                swatchHex={color.swatchHex}
+                alt={color.name ?? color.number}
+                className="aspect-square w-full"
+              />
+            </motion.div>
+          </div>
+
+          {selectedShape && (
+            <div className="flex-1 overflow-hidden rounded-card shadow-card">
+              <NailShapeIcon shape={selectedShape} className="aspect-square w-full" />
+            </div>
+          )}
         </div>
 
         <div className="mt-6 flex flex-col items-center gap-1">
+          {selectedShape && (
+            <p className="text-center font-display text-base font-bold text-black">
+              {selectedShape.name}
+            </p>
+          )}
           {color.brand && (
             <p className="text-center font-display text-2xl font-bold uppercase tracking-wide text-black">
               {color.brand}

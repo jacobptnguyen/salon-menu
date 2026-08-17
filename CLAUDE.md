@@ -2,11 +2,11 @@
 
 ## Overview
 
-A mobile-first, single-page React app customers reach by scanning a QR code at the salon. Pure browsing experience — no accounts, no database, no backend. Three-level navigation: **Categories → Colors → Zoom**. Deployed as a static site on Vercel.
+A mobile-first, single-page React app customers reach by scanning a QR code at the salon. Pure browsing experience — no accounts, no database, no backend. Four-level navigation: **Shape → Categories → Colors → Zoom**. Deployed as a static site on Vercel.
 
 ## Tech Stack
 
-- **Vite + React** (SPA, no routing framework needed — state-based view switching is enough for 3 levels)
+- **Vite + React** (SPA, no routing framework needed — state-based view switching is enough for 4 levels)
 - **Tailwind CSS** for styling
 - **Framer Motion** for transitions (shared-element zoom/scale between views, tap/hover feedback)
 - Deployment: Vercel, static build (`vite build` → `dist/`), no environment variables, no serverless functions
@@ -32,24 +32,25 @@ A mobile-first, single-page React app customers reach by scanning a QR code at t
 | `--color-red-soft` | `#F5D4D7` | Blush red tint — backgrounds, chips, subtle highlights |
 | `--color-green` | `#A8BFA0` | Sage green — secondary accent (dividers, secondary buttons) |
 | `--color-green-soft` | `#DCE6D8` | Sage tint — backgrounds, chips |
-| `--color-text-primary` | `#2E2A28` | Headings, primary text (warm near-black, not pure black) |
-| `--color-text-secondary` | `#7A716D` | Captions, secondary text |
 | `--color-shadow` | `rgba(46, 42, 40, 0.08)` | Card shadows |
 
 Rules of thumb: red and green never sit directly adjacent at full saturation (avoids the classic red/green vibration that's hard on the eyes). Backgrounds stay warm-neutral; red/green appear as accents, tags, and small UI elements — never as large fields behind each other.
 
+There is no separate primary/secondary text-color token (an earlier `--color-text-primary` / `--color-text-secondary` pair was retired, 2026-08-17) — **all text everywhere, at every weight and size, is pure black (`#000000` / Tailwind `text-black`)**. Don't reach for a muted/secondary gray for captions, badges, or de-emphasized labels; use black and let font size/weight carry the hierarchy instead.
+
 ### Typography
 
-- All visible text — headings, category/color names, polish numbers, and the back button — uses one serif display font, **Playfair Display**, for a consistent look throughout. All titles are **center-aligned** at every level (category grid title, color detail title, zoom view title).
-- **Inter** (sans-serif) is loaded and available for any future secondary/caption text, but nothing currently uses it.
+- **All visible text everywhere — every heading, label, caption, badge, button, and body line, at every level of the app — uses the same serif display font (Playfair Display) and the same color (pure black).** There is no second font or second text color anywhere in the UI; hierarchy comes only from size/weight, never from a font or color swap. All titles are also **center-aligned** at every level (category grid title, color detail title, zoom view title).
+- **Inter** (sans-serif) is loaded and available for any future secondary/caption text, but nothing currently uses it — if that changes, it must still be black, not a muted gray.
 - Load both via Google Fonts or self-hosted `@font-face`.
-- Scale: salon header ~28–32px, category card title ~15px, color detail title ~26px, zoom view title ~22px, body/labels ~14px.
+- Scale: salon header ~28–32px, "Choose a Shape"/"Choose a Category"/"Choose a Color" instructional heading 26px bold (shared style across all three), category card title ~15px, shape card title ~11px bold, color detail title ~26px, zoom view title ~22px, body/labels ~14px. Weight varies by role (bold for names/titles, medium for buttons/badges) but color never does.
 
 ### Shape & Elevation
 
 - Card corner radius: **16–20px** (soft rounded, not pill-shaped)
 - Card shadow: subtle diffused shadow using `--color-shadow`, no hard borders
 - Consistent 16–24px spacing/padding grid throughout
+- Selection badges (shape/category reminders, top-right) reuse the same pill treatment as the back button (`bg-surface/90`, `shadow-card`, `backdrop-blur`, fully rounded) rather than introducing a new chip style — they're visually a top-right mirror of the back button, just non-interactive.
 
 ### Motion (Framer Motion)
 
@@ -60,30 +61,81 @@ Rules of thumb: red and green never sit directly adjacent at full saturation (av
 ## Navigation Architecture
 
 ```
-Level 1: Category Grid (Home)
-  ├─ 3-column grid of image cards, one per color family (chosen to fit more
-  │  categories above the fold — see Category order below)
-  ├─ Salon name "LA Salon & Spa" as centered header (Playfair Display)
-  └─ Tap a category → Level 2
+Level 1: Shape Grid (Home)
+  ├─ 4-column grid, 8 nail shapes (2 even rows — deliberately chosen over
+  │  any other column count so 8 shapes never split unevenly)
+  ├─ Salon name "LA Salon & Spa" as centered header (Playfair Display),
+  │  with a "Choose a Shape" heading beneath it, styled the same as the
+  │  "Choose a Category" / "Choose a Color" headings on Levels 2 and 3
+  │  (26px, bold, black) for a consistent instructional-heading style
+  ├─ No back button — this is the true home screen
+  └─ Tap a shape → Level 2
 
-Level 2: Color List (within a category)
+Level 2: Category Grid (within the chosen shape)
+  ├─ 3-column grid of image cards, one per color family (see Category
+  │  order below)
+  ├─ Centered "Choose a Category" heading, set in black (not
+  │  `--color-text-primary`) for stronger readability against the grid
+  ├─ Persistent back button, top-left, label "Shapes", returns to Level 1
+  │  (clears the selected shape)
+  ├─ Selected-shape badge, top-right (icon + name), reminds the customer
+  │  and technician what shape was picked
+  └─ Tap a category → Level 3
+
+Level 3: Color List (within a category)
   ├─ Grid of individual polish color cards (image + polish number + name)
-  ├─ Centered category title at top
-  ├─ Persistent back button, top-left, returns to Level 1
-  └─ Tap a color card → Level 3
+  ├─ Centered "Choose a Color" heading, set in black (not
+  │  `--color-text-primary`) for stronger readability (the category name
+  │  moved to its badge, so this heading is instructional text, not the
+  │  category name)
+  ├─ Persistent back button, top-left, label "Categories", returns to
+  │  Level 2 (clears the selected category)
+  ├─ Two selection badges, top-right, stacked vertically: shape (icon +
+  │  name) above category (icon + name — category icon is a small dot
+  │  filled with the category's `swatchHex`)
+  └─ Tap a color card → Level 4
 
-Level 3: Zoom View
-  ├─ Fullscreen image, pinch/tap to zoom
-  ├─ Centered polish number and name below/over the image
-  ├─ Persistent back button, top-left, returns to Level 2
+Level 4: Zoom View
+  ├─ Fullscreen image, pinch/tap to zoom, shown side-by-side at equal
+  │  size with the nail-shape preview (not a corner badge here) — both are
+  │  the same flex-1/aspect-square treatment, so neither card has its own
+  │  caption underneath (that would throw off the equal-size alignment)
+  ├─ All caption text lives in one centered block below both cards, in
+  │  order: shape name, then the polish description (brand, collection,
+  │  name, number) — "shape desc" stacked above "nail polish desc"
+  ├─ No category badge on this screen — the brand/collection text already
+  │  rendered under the photo covers that, so a redundant badge is skipped
+  ├─ Persistent back button, top-left, label "Colors", returns to Level 3
   └─ No CTA, no links — pure visual detail
 ```
 
-State can be managed with simple React state (`selectedCategory`, `selectedColor`) — no router needed given only 3 fixed levels and no shareable deep links required. (If deep-linking to a specific color is later desired, swap in a lightweight router.)
+Selection badges (shape and category) are purely visual reminders — not tappable, not a navigation shortcut. The only way back is the top-left back button at each level.
+
+State can be managed with simple React state (`selectedShape`, `selectedCategory`, `selectedColor`) — no router needed given only 4 fixed levels and no shareable deep links required. (If deep-linking to a specific color is later desired, swap in a lightweight router.)
 
 ## Data Model
 
-Single local file, e.g. `src/data/colors.js`:
+### Shapes — `src/data/shapes.js`
+
+```js
+export const shapes = [
+  {
+    id: "almond",
+    name: "Almond",
+    preferPhoto: true, // true for all 8 — real photos are the default render
+    image: "/images/shapes/almond.jpg", // real reference photo, supplied by the salon
+    nail: { borderRadius: "50% 50% 10% 10% / 100% 100% 25% 25%" } // nail-cap clip shape — CSS fallback only
+  }
+  // ...8 shapes total, grid order: Square, Rounded, Oval, Squarely
+  // Rounded, Ballerina, Almond, Stiletto, Mountain Peak
+];
+```
+
+- `NailShapeIcon` renders `image` (a real reference photo) whenever `preferPhoto` is set, cropped from the top (`object-top`) so the nail tip at the top of the photo stays visible instead of getting cut off by a center crop. All 8 shapes currently set `preferPhoto: true`.
+- If `preferPhoto` is unset, or the photo fails to load, `NailShapeIcon` falls back to a small finger-silhouette (fixed skin-tone rounded rectangle) with a colored nail cap layered on top, shaped per `nail` (`border-radius` for the flatter/rounder tips, `clip-path` for the tapered/pointed ones) — a stylized "finger + polish" icon rather than a bare colored blob. Real photos live at `/public/images/shapes/<id>.jpg`.
+- Fixed set of 8. **Grid order is salon-specified (as of 2026-08-17), not grouped by tip shape**: Square, Rounded, Oval, Squarely Rounded, Ballerina, Almond, Stiletto, Mountain Peak — two rows of 4. This overrides an earlier "flatter tips first, then tapered tips" grouping; re-derive from a future request rather than assuming that grouping comes back.
+
+### Colors — `src/data/colors.js`
 
 ```js
 export const categories = [

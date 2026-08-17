@@ -10,8 +10,6 @@ export default {
         "red-soft": "#F5D4D7",
         green: "#A8BFA0",
         "green-soft": "#DCE6D8",
-        "text-primary": "#2E2A28",
-        "text-secondary": "#7A716D",
       },
       boxShadow: {
         card: "0 4px 16px rgba(46, 42, 40, 0.08)",
