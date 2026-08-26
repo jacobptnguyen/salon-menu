@@ -1,6 +1,6 @@
 # Digital Nail Polish Menu
 
-A mobile-first web app that replaces a salon's paper color-swatch binder with a QR-code menu customers browse on their own phone. No accounts, no booking flow, no backend — just a scrolling gallery of collection photos, each independently pinch-zoomable, pannable, and rotatable in place.
+A mobile-first web app that replaces a salon's paper color-swatch binder with a QR-code menu customers browse on their own phone. No accounts, no booking flow, no backend — just a scrolling gallery of **25+ interactable cards**, each independently pinch-zoomable, pannable, and rotatable in place. Already used by **120+ unique visitors** scanning the salon's QR code.
 
 **[View live demo →](https://salon-menu-jade.vercel.app/)**
 
