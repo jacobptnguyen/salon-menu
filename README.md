@@ -6,6 +6,7 @@ A mobile-first web app that replaces a salon's paper color-swatch binder with a 
 
 <p align="center">
   <img src="docs/screenshots/gallery.png" width="45%" alt="Collection gallery" />
+  <img src="docs/screenshots/qr-code.jpg" width="45%" alt="QR code posted in the salon" />
 </p>
 
 ## Highlights
