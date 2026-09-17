@@ -33,6 +33,12 @@ export const collections = [
     swatchHex: "#9C9083",
   },
   {
+    id: "canni",
+    name: "Canni",
+    image: "/images/collections/canni.jpg",
+    swatchHex: "#C9C295",
+  },
+  {
     id: "chance-by-cre8tion-bare-collection",
     brand: "CHANCE by cre8tion",
     name: "BARE COLLECTION",
