@@ -1,6 +1,6 @@
 # Digital Nail Polish Menu
 
-Salons hand customers a physical binder of color swatches to flip through, but there's only one binder: while one customer is using it, another has to wait. This app replaces the binder with a QR-code menu customers browse on their own phone: no accounts, no booking flow, no backend, just a scrolling gallery of **25+ interactable cards**, each independently pinch-zoomable, pannable, and rotatable in place. Already used by **430+ unique visitors** scanning the salon's QR code.
+Salons hand customers a physical binder of color swatches to flip through, but there's only one binder: while one customer is using it, another has to wait. This app replaces the binder with a QR-code menu customers browse on their own phone: no accounts, no booking flow, no backend, just a scrolling gallery of **30+ interactable cards**, each independently pinch-zoomable, pannable, and rotatable in place. Already used by **450+ unique visitors** scanning the salon's QR code.
 
 ## [View Live Demo →](https://salon-menu-jade.vercel.app/)
 
