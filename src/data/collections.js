@@ -33,6 +33,33 @@ export const collections = [
     swatchHex: "#9C9083",
   },
   {
+    id: "canni-b",
+    name: "Canni",
+    image: "/images/collections/canni-b.jpg",
+    swatchHex: "#9D9280",
+  },
+  {
+    id: "double-rhythm-avocado-green",
+    brand: "Double Rhythm",
+    name: "Avocado Green",
+    image: "/images/collections/double-rhythm-avocado-green.jpg",
+    swatchHex: "#8C8E77",
+  },
+  {
+    id: "double-rhythm-pastel-candy",
+    brand: "Double Rhythm",
+    name: "Pastel Candy",
+    image: "/images/collections/double-rhythm-pastel-candy.jpg",
+    swatchHex: "#938582",
+  },
+  {
+    id: "double-rhythm-pumpkin-by-red",
+    brand: "Double Rhythm",
+    name: "Pumpkin By Red",
+    image: "/images/collections/double-rhythm-pumpkin-by-red.jpg",
+    swatchHex: "#8F766A",
+  },
+  {
     id: "canni",
     name: "Canni",
     image: "/images/collections/canni.jpg",
